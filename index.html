@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API pada Javascript</title>
+</head>
+<body>
+  <select id="Dropdown"></select>
+
+  <script >
+const apiUrl = 'https://api.goapi.io/regional/provinsi?api_key=d82248c7-af5d-57e8-a660-2168ac9b';
+
+function fetchCountries() {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const dropdown = document.getElementById('Dropdown');
+      dropdown.innerHTML = '';
+
+
+      data.data.forEach(country => {
+        const option = document.createElement('option');
+        option.value = country.id;
+        option.text = country.name;
+        dropdown.add(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching countries:', error);
+    });
+}
+
+fetchCountries();
+  </script>
+</body>
+</html>
