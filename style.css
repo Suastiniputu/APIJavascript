@@ -1,0 +1,60 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: hsl(0, 0%, 100%);
+    margin: 0;
+    padding: 20px;
+    align-items: center;
+   
+}
+
+
+#full-background {
+    background-image: url(petaIndonesia.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    opacity: 0.7;
+}
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0,1);
+    width: 80%;
+    max-width: 600px;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1em;
+}
+select:focus {
+    border-color: #03468a;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 115, 230, 0.5);
+}
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+footer {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    background-color: #000000;
+    opacity: 0.7;
+}
