@@ -15,6 +15,7 @@
 
   <select id="Dropdown"></select>
   <select id="kota"></select>
+  <select id="kecamatan"></select>
 
   <script>
     const apiUrl = 'https://api.goapi.io/regional/provinsi?api_key=d82248c7-af5d-57e8-a660-2168ac9b';
@@ -57,12 +58,39 @@
             option.text = city.name;
             dropdown.add(option);
           });
+
+
+          const SelectedCityId = dropdown.value;
+      fetchKecamatan(SelectedCityId);
         })
         .catch(error => {
           console.error('Error fetching cities:', error);
         });
+
+  
     }
 
+    function fetchKecamatan(kota_id) {
+      const kecamatanApiUrl = `https://api.goapi.io/regional/kecamatan?kota_id=${kota_id}&api_key=d82248c7-af5d-57e8-a660-2168ac9b`;
+
+      fetch(kecamatanApiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const dropdown = document.getElementById('kecamatan');
+          dropdown.innerHTML = '';
+
+          data.data.forEach(kecamatan => {
+            const option = document.createElement('option');
+            option.value = kecamatan.id;
+            option.text = kecamatan.name;
+            dropdown.add(option);
+          })
+        })
+        .catch(error => {
+          console.error('Error fetching kecamatan: ', error);
+        });
+    }
+     
   
     fetchProvinces();
 
@@ -70,6 +98,11 @@
     document.getElementById('Dropdown').addEventListener('change', function() {
       const selectedProvinceId = this.value;
       fetchCities(selectedProvinceId);
+    });
+
+    document.getElementById('kota').addEventListener('change', function() {
+      const SelectedCityId = this.value;
+      fetchKecamatan(SelectedCityId);
     });
 
 
